@@ -10,16 +10,24 @@ default_parameters:
 
 index_modifier: 1
 
+# Resolution order, first match wins:
+#   <provider>.<resource type pattern>  ->  <provider>.default  ->  default
+#
+# Keys below a provider are matched against the resource type with "*"
+# expanded to ".*", so "Microsoft.Storage/*" matches
+# "Microsoft.Storage/storageAccounts".
+#
+# NOTE: the provider key has to be the one used in the resource identifier
+# ("Azure::Microsoft.Storage/storageAccounts" => "Azure"). This block used to
+# key on "azurerm" with resource names like "storage_account", left over from
+# the old azurerm_* identifier format - nothing ever matched it and every name
+# fell through to `default` below.
+#
+# To keep the input casing for a type, add it as false, e.g.:
+#   Azure:
+#     "Microsoft.Compute/virtualMachines*": false
 enforce_lower_case:
   default: true
-
-  azurerm:
-    default: false
-    container_registry: true
-    storage_account: true
-    key_vault: true
-    dns_zone: true
-    private_dns_zone: true
 
 #
 # ################################################################################################
