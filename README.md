@@ -8,7 +8,7 @@ A schema-driven approach to consistent resource naming in Terraform. Define your
 This module loads a naming convention (a bundled one, or your own YAML), merges your overrides over it, and outputs a single resolved schema that other modules can build resource names from. It only resolves the *schema* — to actually render resource names from it, pair it with the [`LemurDaniel/naming/random`](https://registry.terraform.io/modules/LemurDaniel/naming/random/latest) module, as shown below.
 
 > [!NOTE]
-> **AI disclaimer:** Originally written by hand, then improved with the help of AI. The module is covered by `terraform test`, and the examples are the same files the tests run against. 🤖
+> **AI disclaimer:** Originally written by hand, then improved with the help of AI. The module is covered by `terraform test`. 🤖
 
 ## 🚀 Quick Start
 
